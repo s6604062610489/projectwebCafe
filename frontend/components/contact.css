@@ -1,0 +1,48 @@
+/*Font ENG */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+/*Font Thai */
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+/*Font ENG */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+
+.container-contact {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contact-footer {
+    background-color: #F7DCB9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+    text-align: center;
+    font-family: "Libre Caslon Display", serif;
+}
+
+.contact-section,
+.opening-section {
+    font-size: 18px;
+    color: #000;
+    line-height: 1.6;
+}
+
+@media (min-width: 450px) {
+    .container-contact {
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    .contact-footer {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container-contact {
+        margin: 0 auto;
+        width: 65%;
+    }
+}

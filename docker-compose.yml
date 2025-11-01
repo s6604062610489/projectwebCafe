@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    container_name: cafe-backend
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/uploads:/app/uploads
+      - /app/node_modules
+    working_dir: /app/src
+    env_file:
+      - ./backend/src/.env
+  
+  frontend:
+    build: ./frontend
+    container_name: cafe-frontend
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend

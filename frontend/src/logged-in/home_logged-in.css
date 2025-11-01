@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+}
+
+.container-home{
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* slide promotion */
+.pro-log{
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.pro-log img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (min-width: 450px){
+    .container-home{
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    /* slide promotion */
+    .pro-log{
+        height: 400px;
+    }
+}
+
+@media (min-width: 1024px){
+    .container-home{
+        margin: 0 auto;
+        width: 65%;
+    }
+
+    /* slide promotion */
+    .slide{
+        height: 450px;
+    }
+
+    .pro-log{
+        height: 525px;
+    }
+}

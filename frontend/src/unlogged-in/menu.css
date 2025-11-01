@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+/*Font ENG */
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+/*Font Thai */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+
+* {
+    margin: 0;
+}
+
+.container-menu {
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+}
+
+.slide-menu {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.pro-menu {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.pro-menu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.filter-side {
+    display: none;
+}
+
+.search-bar {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid rgb(111, 78, 55, 0.5);
+    position: relative;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    margin: 0 8px;
+    font-family: "Inter", sans-serif, "Itim", cursive;
+}
+
+.search-bar .icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.search-result {
+    position: absolute;
+    left: 10px;
+    width: 55%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 5px;
+    list-style: none;
+    padding: 5px 8px;
+    z-index: 999;
+}
+
+.search-result li {
+    padding: 6px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif, "Itim", cursive;
+}
+
+.search-result li:hover {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+}
+
+.class-product .cat-bar {
+    margin-top: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 23px;
+    background-color: #6F4E37;
+    font-family: "Libre Caslon Display", serif;
+    overflow: hidden;
+}
+
+.product-list {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.product-card {
+    margin-top: 10px;
+    padding: 10px;
+    width: 350px;
+    border: 1px solid rgba(114, 114, 114, 0.5);
+    border-radius: 15px;
+    text-align: center;
+    font-family: "Inter", sans-serif, "Itim", cursive;
+    background: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+    width: 200px;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 8px;
+}
+
+.add-btn {
+    margin-top: 10px;
+    background-color: #6F4E37;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.add-btn:hover {
+    background-color: #F7DCB9;
+    color: #6F4E37;
+}
+
+.floating-cart {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #6F4E37;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 999;
+    transition: transform 0.25s ease;
+    position: fixed;
+}
+
+.floating-cart::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(247, 220, 185, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.floating-cart:hover::after {
+    opacity: 1;
+}
+
+.floating-cart:hover {
+    transform: scale(1.08);
+    background-color: #F7DCB9;
+    color: #6F4E37;
+}
+
+/* 🔢 ตัวเลขจำนวนสินค้า */
+.cart-count {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #F7DCB9;
+    color: #6F4E37;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+/* 🧾 Cart Box (popup กลางจอ) */
+.cart-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 420px;
+    max-height: 70vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    padding: 18px;
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* 🌟 pseudo element เงาด้านหลัง */
+.cart-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    box-shadow: inset 0 0 15px rgba(111, 78, 55, 0.2);
+    pointer-events: none;
+}
+
+.cart-box.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Header */
+.cart-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.cart-box-header h4 {
+    margin: 0;
+    font-family: "Libre Caslon Display", serif;
+    color: #6F4E37;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: #6F4E37;
+    cursor: pointer;
+}
+
+/* รายการสินค้า */
+.cart-box-items {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+}
+
+.cart-box-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.cart-box-item img {
+    width: 55px;
+    height: 55px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.cart-item-info p {
+    margin: 0;
+    font-size: 14px;
+    font-family: "Inter", sans-serif, "Itim", cursive;
+    color: #333;
+}
+
+.cart-box-item button {
+    border: none;
+    background: none;
+    color: red;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Footer */
+.cart-box-footer {
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.cart-box-footer p {
+    font-family: "Itim", cursive;
+    color: #6F4E37;
+}
+
+.cart-box-footer button {
+    background: #6F4E37;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+}
+
+.cart-box-footer button:hover {
+    background: #F7DCB9;
+    color: #6F4E37;
+}
+
+/* Empty */
+.empty-text {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+@media (min-width: 450px) {
+    .container-menu {
+        margin: 0 auto;
+        width: 70%;
+        padding: 10px 0;
+    }
+
+    .slide-menu {
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    .pro-menu {
+        height: 400px;
+    }
+
+    .search-bar {
+        width: 28%;
+    }
+
+    .search-result {
+        left: 16%;
+        width: 23%;
+        z-index: 999;
+    }
+
+    .show-product {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .category-section {
+        width: 100%;
+        display: block;
+    }
+
+    .class-product {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .product-list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: flex-start;
+    }
+
+    .filter-side {
+        margin-top: 10px;
+        display: flex;
+        width: 35%;
+    }
+
+    .filter-side ul {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .filter-side li {
+        width: 70%;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 10px;
+        font-family: "Libre Caslon Display", serif;
+        font-weight: 200;
+        font-size: 20px;
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+        transition: color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .filter-side li:hover {
+        color: #F7DCB9;
+    }
+
+    .product-card {
+        width: 165px;
+    }
+
+    .product-card img {
+        width: 130px;
+        height: 120px;
+    }
+
+    .floating-cart {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container-menu {
+        margin: 0 auto;
+        width: 65%;
+    }
+
+    .slide-menu {
+        margin: 0 auto;
+        width: 65%;
+    }
+
+    .pro-menu {
+        height: 525px;
+    }
+
+    .search-bar {
+        width: 24%;
+    }
+
+    .search-result {
+        left: 17.25%;
+        width: 18%;
+        z-index: 999;
+    }
+
+    .product-card {
+        width: 200px;
+    }
+
+    .product-card img {
+        width: 180px;
+        height: 150px;
+    }
+
+    .floating-cart {
+        position: absolute;
+        bottom: 30px;
+        right: 50px;
+    }
+}
