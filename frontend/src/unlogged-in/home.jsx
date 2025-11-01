@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import './home.css'
 import Contact from "../../components/contact";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Home() {
     const [bestSellers, setBestSellers] = useState([]);
